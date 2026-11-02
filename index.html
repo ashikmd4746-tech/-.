@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quran Academy – কুরআন শিক্ষা</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f6f4;--sf:#fff;--ink:#12302b;--mut:#4f6b65;--ac:#0e6b5c;--ac2:#b8860b;--ln:#cfdcd7;--ok:#1b7f4b;--bad:#b3322a;--hero:#0c3b34;--herot:#eaf5f1;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1917;--sf:#14262a;--ink:#e6f2ef;--mut:#9bb8b1;--ac:#4cc3ad;--ac2:#e0b84c;--ln:#27413e;--ok:#5fd18f;--bad:#ff8077;--hero:#08201c;--herot:#eaf5f1;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1917;--sf:#14262a;--ink:#e6f2ef;--mut:#9bb8b1;--ac:#4cc3ad;--ac2:#e0b84c;--ln:#27413e;--ok:#5fd18f;--bad:#ff8077;--hero:#08201c;--herot:#eaf5f1;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Hind Siliguri",system-ui,sans-serif}
+.ar{font-family:"Amiri","Traditional Arabic","Scheherazade New",serif;direction:rtl;line-height:1.6}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--hero);color:var(--herot);display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap}
+header b{font-size:1.1rem}header nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+nav button,.btn{font:inherit;border:1px solid var(--ln);background:var(--sf);color:var(--ink);padding:6px 14px;border-radius:8px;cursor:pointer}
+header nav button{background:transparent;color:var(--herot);border-color:#ffffff40}
+button:focus-visible{outline:3px solid var(--ac2);outline-offset:2px}
+button.on{background:var(--ac2);color:#1a1300;border-color:var(--ac2)}
+.btn.p{background:var(--ac);color:#fff;border-color:var(--ac)}
+.hero{background:var(--hero);color:var(--herot);padding:48px 16px 56px;text-align:center}
+.hero .big{font-size:clamp(3.2rem,12vw,6.5rem);color:var(--ac2);margin:0}
+.hero h1{margin:.2em 0;font-size:clamp(1.5rem,5vw,2.4rem)}.hero p{margin:.3em auto;max-width:34em;opacity:.9}
+main{max-width:980px;margin:0 auto;padding:20px 16px 60px}
+section{display:none}section.show{display:block}
+h2{font-size:1.5rem;margin:.6em 0 .2em}.sub{color:var(--mut);margin:0 0 16px}
+.lv{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.lc{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:14px 16px}
+.lc h3{margin:0;font-size:1.05rem}.lc p{margin:.3em 0;color:var(--mut);font-size:.92rem}
+.tag{display:inline-block;font-size:.78rem;padding:1px 10px;border-radius:99px;background:var(--ln)}
+.tag.live{background:var(--ac);color:#fff}
+.grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(84px,1fr))}
+.lt{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:6px;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
+.lt .ar{font-size:2.8rem;display:block;line-height:1.3}.lt small{color:var(--mut)}
+.lt[aria-pressed=true]{border:2px solid var(--ac2)}
+.det{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:18px;margin:16px 0;display:none}
+.det.show{display:block}
+.det .huge{font-size:7rem;text-align:center;display:block;color:var(--ac);line-height:1.2}
+.forms{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.forms div{border:1px solid var(--ln);border-radius:8px;padding:4px}.forms .ar{font-size:2.4rem;display:block}.forms small{color:var(--mut)}
+.hk{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.hc{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:14px}
+.hc .ar{font-size:4.2rem;text-align:center;display:block;color:var(--ac)}.hc h3{margin:0}
+.hc p{margin:.25em 0;font-size:.93rem}.hc b{color:var(--ac2)}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:420px}
+.opts button{font-size:3.2rem;padding:6px;font-family:"Amiri",serif;line-height:1.4}
+.opts button.ok{background:var(--ok);color:#fff}.opts button.bad{background:var(--bad);color:#fff}
+.q{font-size:1.2rem;margin:10px 0}.score{font-weight:700;color:var(--ac)}
+.ayah{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:14px 18px;margin:10px 0;display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.ayah .ar{font-size:2.3rem;flex:1 1 280px}.ayah .bn{flex:1 1 200px}.ayah small{display:block;color:var(--mut)}
+.note{border-left:4px solid var(--ac2);background:var(--sf);padding:10px 14px;border-radius:6px;margin:18px 0;font-size:.92rem}
+footer{text-align:center;color:var(--mut);padding:20px;font-size:.88rem}
+@media(max-width:520px){.forms{grid-template-columns:repeat(2,1fr)}.det .huge{font-size:5.5rem}}
+</style>
+</head>
+<body>
+<header>
+<b>Quran Academy – কুরআন শিক্ষা</b>
+<nav aria-label="প্রধান মেনু">
+<button class="on" data-t="home">শুরু</button><button data-t="l1">হরফ</button><button data-t="l2">হরকত</button><button data-t="quiz">কুইজ</button><button data-t="l9">পড়া অনুশীলন</button>
+</nav>
+</header>
+
+<div class="hero">
+<p class="ar big">قُرْآن</p>
+<h1>শূন্য থেকে সহিহ কুরআন তিলাওয়াত শিখুন</h1>
+<p>আরবি না জানলেও সমস্যা নেই। বাংলায় সহজ ব্যাখ্যা, বড় হরফ, শোনার বাটন আর অনুশীলন নিয়ে ধাপে ধাপে এগিয়ে যান।</p>
+<p><button class="btn p" data-go="l1">লেভেল ১ শুরু করুন</button></p>
+</div>
+
+<main>
+<section id="home" class="show">
+<h2>কোর্সের ৯টি লেভেল</h2>
+<p class="sub">সবুজ চিহ্নিত লেভেলগুলো এখন চালু। বাকিগুলো ক্রমান্বয়ে যুক্ত হবে।</p>
+<div class="lv" id="levels"></div>
+<div class="note">তাজবিদের উন্নত নিয়ম প্রকাশের আগে অভিজ্ঞ কুরআন শিক্ষক দিয়ে যাচাই করা প্রয়োজন। শোনার বাটন আপাতত আপনার ডিভাইসের আরবি ভয়েস ব্যবহার করে; চূড়ান্ত সংস্করণে কারী-র রেকর্ডিং বসানো উচিত।</div>
+</section>
+
+<section id="l1">
+<h2>লেভেল ১: আরবি হরফ পরিচিতি</h2>
+<p class="sub">যেকোনো হরফে চাপ দিন। আরবি ডান থেকে বামে পড়া হয়।</p>
+<div class="grid" id="letters" role="group" aria-label="আরবি হরফ"></div>
+<div class="det" id="det" aria-live="polite"></div>
+</section>
+
+<section id="l2">
+<h2>লেভেল ২: হরকত শিক্ষা</h2>
+<p class="sub">হরকত হলো হরফের ওপরে বা নিচের চিহ্ন, যা বলে হরফটি কীভাবে উচ্চারণ হবে। উদাহরণে হরফ ب (বা) ব্যবহার করা হয়েছে।</p>
+<div class="hk" id="harakat"></div>
+</section>
+
+<section id="quiz">
+<h2>হরফ চেনার কুইজ</h2>
+<p class="sub">নাম শুনে বা পড়ে সঠিক হরফটি বেছে নিন।</p>
+<div class="q" id="qtext"></div>
+<div class="opts" id="qopts"></div>
+<p class="score" id="qscore"></p>
+<button class="btn" id="qnext">পরের প্রশ্ন</button>
+<button class="btn" id="qhear">নামটি শুনুন</button>
+</section>
+
+<section id="l9">
+<h2>লেভেল ৯: কুরআন পড়ার অনুশীলন</h2>
+<p class="sub">সূরা আল-ইখলাস। প্রতিটি আয়াত ধীরে পড়ুন, তারপর শুনে মিলিয়ে নিন।</p>
+<div id="ayahs"></div>
+<div class="note">বাংলা উচ্চারণ শুধু সাহায্যের জন্য। সঠিক তিলাওয়াত শিখতে একজন যোগ্য শিক্ষকের কাছে শুনিয়ে নিন।</div>
+</section>
+</main>
+<footer>Quran Academy – কুরআন শিক্ষা</footer>
+
+<script>
+var L=[
+["ا","আলিফ","আ / (হরকত অনুযায়ী)",0,"",0],["ب","বা","বা",1,"নিচে",1],["ت","তা","তা",2,"উপরে",1],["ث","ছা","ছা (জিভের ডগা দাঁতে লাগিয়ে)",3,"উপরে",1],
+["ج","জীম","জীম",1,"নিচে",1],["ح","হা","হা (গলার ভেতর থেকে)",0,"",1],["خ","খা","খা",1,"উপরে",1],["د","দাল","দাল",0,"",0],
+["ذ","যাল","যাল",1,"উপরে",0],["ر","রা","রা",0,"",0],["ز","যা","যা",1,"উপরে",0],["س","সীন","সীন",0,"",1],
+["ش","শীন","শীন",3,"উপরে",1],["ص","ছোয়াদ","ছোয়াদ (মোটা সুর)",0,"",1],["ض","দোয়াদ","দোয়াদ (মোটা সুর)",1,"উপরে",1],["ط","তোয়া","তোয়া (মোটা সুর)",0,"",1],
+["ظ","জোয়া","জোয়া (মোটা সুর)",1,"উপরে",1],["ع","আইন","আইন (গলা থেকে)",0,"",1],["غ","গাইন","গাইন",1,"উপরে",1],["ف","ফা","ফা",1,"উপরে",1],
+["ق","কাফ","কাফ (গভীর সুর)",2,"উপরে",1],["ك","কাফ","কাফ (ক)",0,"",1],["ل","লাম","লাম",0,"",1],["م","মীম","মীম",0,"",1],
+["ن","নুন","নুন",1,"উপরে",1],["ه","হা","হা (হালকা)",0,"",1],["و","ওয়াও","ওয়াও",0,"",0],["ي","ইয়া","ইয়া",2,"নিচে",1],["لا","লাম-আলিফ","লা",0,"",0]];
+var H=[
+["بَ","জবর (ফাতহা)","হরফের ওপরে ছোট দাগ।","ওপরে","‘আ’-কার; বা","একটি ছোট ‘আ’ ধ্বনি যোগ করে। ب+َ = বা"],
+["بِ","জের (কাসরা)","হরফের নিচে ছোট দাগ।","নিচে","‘ই’-কার; বি","একটি ছোট ‘ই’ ধ্বনি যোগ করে। ب+ِ = বি"],
+["بُ","পেশ (দাম্মা)","হরফের ওপরে ছোট ‘ওয়াও’-এর মতো চিহ্ন।","ওপরে","‘উ’-কার; বু","একটি ছোট ‘উ’ ধ্বনি যোগ করে। ب+ُ = বু"],
+["بْ","জযম (সুকুন)","হরফের ওপরে ছোট বৃত্ত।","ওপরে","স্বরহীন; ব্","হরফের স্বর কেটে দেয়, আগের হরফের সাথে মিলিয়ে পড়তে হয়। যেমন اَبْ = আব্"],
+["بّ","তাশদীদ (শাদ্দা)","হরফের ওপরে ‘ৎ’ আকৃতির চিহ্ন।","ওপরে","হরফ দ্বিগুণ; ব্বা","একই হরফ দুইবার পড়ার কাজ করে: প্রথমটি স্বরহীন, পরেরটি হরকতসহ। যেমন رَبَّ = রাব্বা"],
+["بً","দুই জবর (ফাতহাতাইন)","হরফের ওপরে পাশাপাশি দুটি জবর।","ওপরে","‘আন’; বান","শেষে ‘আন’ ধ্বনি যোগ করে। বা+ন = বান"],
+["بٍ","দুই জের (কাসরাতাইন)","হরফের নিচে পাশাপাশি দুটি জের।","নিচে","‘ইন’; বিন","শেষে ‘ইন’ ধ্বনি যোগ করে।"],
+["بٌ","দুই পেশ (দাম্মাতাইন)","হরফের ওপরে পাশাপাশি দুটি পেশ।","ওপরে","‘উন’; বুন","শেষে ‘উন’ ধ্বনি যোগ করে।"]];
+var LV=[["১","আরবি হরফ পরিচিতি","২৯টি হরফ, নাম, আকৃতি, নুকতা",1,"l1"],["২","হরকত শিক্ষা","৮টি চিহ্ন, বড় উদাহরণসহ",1,"l2"],["৩","হরফ জোড়া লাগানো","শুরু, মাঝ ও শেষের রূপ; ডান থেকে বামে পড়া",0],["৪","সুকুন ও তাশদীদ অনুশীলন","স্বরহীন হরফ ও দ্বিত্ব",0],["৫","তানবীন ও মাদ","ছোট ও লম্বা স্বর, আলিফ-ওয়াও-ইয়া",0],["৬","নূরানী কায়দা কোর্স","ধাপে ধাপে সম্পূর্ণ পাঠ",0],["৭","তাজবিদ প্রাথমিক","মাখরাজ, ইযহার, ইদগাম, ইকলাব, ইখফা, গুন্নাহ",0],["৮","উন্নত তাজবিদ","মাদের প্রকার, ওয়াকফ, পূর্ণ আয়াত",0],["৯","কুরআন পড়ার অনুশীলন","ছোট সূরা দিয়ে শুরু",1,"l9"]];
+var $=function(i){return document.getElementById(i)};
+function speak(t){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="ar-SA";u.rate=.7;speechSynthesis.speak(u)}catch(e){}}
+function show(t){document.querySelectorAll("section").forEach(function(s){s.classList.toggle("show",s.id===t)});
+document.querySelectorAll("header nav button").forEach(function(b){b.classList.toggle("on",b.dataset.t===t)});window.scrollTo(0,0);if(t==="quiz"&&!cur)nextQ()}
+document.querySelectorAll("[data-t]").forEach(function(b){b.onclick=function(){show(b.dataset.t)}});
+document.querySelectorAll("[data-go]").forEach(function(b){b.onclick=function(){show(b.dataset.go)}});
+$("levels").innerHTML=LV.map(function(l){return '<div class="lc"><h3>লেভেল '+l[0]+': '+l[1]+'</h3><p>'+l[2]+'</p>'+(l[3]?'<button class="btn p" data-go="'+l[4]+'">শুরু করুন</button> <span class="tag live">চালু</span>':'<span class="tag">শীঘ্রই আসছে</span>')+'</div>'}).join("");
+document.querySelectorAll("#levels [data-go]").forEach(function(b){b.onclick=function(){show(b.dataset.go)}});
+$("letters").innerHTML=L.map(function(x,i){return '<button class="lt" data-i="'+i+'" aria-pressed="false"><span class="ar">'+x[0]+'</span><small>'+x[1]+'</small></button>'}).join("");
+function dots(x){return x[3]?x[3]+'টি নুকতা, হরফের '+x[4]:'কোনো নুকতা নেই'}
+function pick(i){var x=L[i],c=x[0];document.querySelectorAll(".lt").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.i==i)});
+var two=c==="لا";var f=two?[c,"—",c,"—"]:[c,x[5]?c+"\u200D":"—",x[5]?"\u200D"+c+"\u200D":"—","\u200D"+c];
+if(!two&&!x[5]){f[3]="\u200D"+c}
+var d=$("det");d.className="det show";
+d.innerHTML='<span class="ar huge">'+c+'</span><h3 style="text-align:center;margin:0">'+x[1]+'</h3><p style="text-align:center;margin:.2em 0">উচ্চারণ: <b>'+x[2]+'</b></p><p style="text-align:center"><button class="btn p" id="hear">শুনুন</button></p><p>চেনার উপায়: '+dots(x)+'।'+(x[5]?'':' এই হরফ পরের হরফের সাথে জোড়া লাগে না।')+'</p><div class="forms"><div><span class="ar">'+f[0]+'</span><small>আলাদা</small></div><div><span class="ar">'+f[1]+'</span><small>শুরুতে</small></div><div><span class="ar">'+f[2]+'</span><small>মাঝে</small></div><div><span class="ar">'+f[3]+'</span><small>শেষে</small></div></div><p>অনুশীলন: <span class="ar" style="font-size:2.2rem">'+c+'َ &nbsp; '+c+'ِ &nbsp; '+c+'ُ</span></p>';
+$("hear").onclick=function(){speak(c+"َ")};d.scrollIntoView({behavior:"smooth",block:"nearest"})}
+document.querySelectorAll(".lt").forEach(function(b){b.onclick=function(){pick(+b.dataset.i)}});
+$("harakat").innerHTML=H.map(function(h,i){return '<div class="hc"><span class="ar">'+h[0]+'</span><h3>'+h[1]+'</h3><p><b>এটা কী?</b> '+h[2]+'</p><p><b>কোথায় বসে?</b> '+h[3]+'</p><p><b>উচ্চারণ:</b> '+h[4]+'</p><p><b>কী পরিবর্তন করে?</b> '+h[5]+'</p><button class="btn" data-h="'+i+'">শুনুন</button></div>'}).join("");
+document.querySelectorAll("[data-h]").forEach(function(b){b.onclick=function(){speak(H[+b.dataset.h][0])}});
+var cur=null,sc=0,tot=0;
+function nextQ(){var pool=L.filter(function(x){return x[0]!=="لا"});var a=pool.sort(function(){return Math.random()-.5}).slice(0,4);cur=a[Math.floor(Math.random()*4)];
+$("qtext").textContent="কোনটি “"+cur[1]+"” হরফ?";
+$("qopts").innerHTML=a.map(function(x){return '<button class="btn" data-c="'+x[0]+'">'+x[0]+'</button>'}).join("");
+document.querySelectorAll("#qopts button").forEach(function(b){b.onclick=function(){if(b.disabled)return;tot++;
+document.querySelectorAll("#qopts button").forEach(function(o){o.disabled=true;if(o.dataset.c===cur[0])o.classList.add("ok")});
+if(b.dataset.c===cur[0])sc++;else b.classList.add("bad");$("qscore").textContent="স্কোর: "+sc+" / "+tot}})}
+$("qnext").onclick=nextQ;$("qhear").onclick=function(){if(cur)speak(cur[0])};
+var A=[["قُلْ هُوَ اللَّهُ أَحَدٌ","কুল হুওয়াল্লাহু আহাদ"],["اللَّهُ الصَّمَدُ","আল্লাহুস সামাদ"],["لَمْ يَلِدْ وَلَمْ يُولَدْ","লাম ইয়ালিদ ওয়া লাম ইউলাদ"],["وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ","ওয়া লাম ইয়াকুল্লাহু কুফুওয়ান আহাদ"]];
+$("ayahs").innerHTML=A.map(function(a,i){return '<div class="ayah"><span class="ar">'+a[0]+'</span><div class="bn"><small>আয়াত '+(i+1)+'</small>'+a[1]+'<br><button class="btn" data-a="'+i+'">শুনুন</button></div></div>'}).join("");
+document.querySelectorAll("[data-a]").forEach(function(b){b.onclick=function(){speak(A[+b.dataset.a][0])}});
+</script>
+</body>
+</html>
